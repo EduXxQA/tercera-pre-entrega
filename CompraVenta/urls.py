@@ -6,13 +6,13 @@ urlpatterns = [
     path('actualiza-auto/<marca>/<modelo>/<anio>/', auto),
     path('actualiza-camioneta/<marca>/<modelo>/<anio>/', camioneta),
     path('actualiza-moto/<marca>/<modelo>/<anio>/', moto),
-    path('stock-autos/', stock_autos),
-    path('stock-camionetas/', stock_camionetas),
-    path('stock-motos/', stock_motos),
-    path('', inicio),
-    path('vista-auto/', vista_auto),
-    path('vista-camioneta/', vista_camioneta),
-    path('vista-motos/', vista_moto),
+    path('stock-autos/', stock_autos, name="Stock_Autos"),
+    path('stock-camionetas/', stock_camionetas, name="Stock_Camionetas"),
+    path('stock-motos/', stock_motos, name="Stock_Motos"),
+    path('', inicio, name="Inicio"),
+    path('vista-auto/', vista_auto, name='Vista_Autos'),
+    path('vista-camioneta/', vista_camioneta, name="Vista_Camionetas"),
+    path('vista-motos/', vista_moto, name="Vista_Motos"),
     
 ]
 

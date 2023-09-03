@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Camionetas</title>
-</head>
-<body>
+
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+   
+<h1>SECCION MOTOS</h1>
+    
+<p>Estos son las marcas que se encuentran en STOCK:</p>
     <ul>
-        
         {% for moto in stock_motos  %}
             <li>{{moto.marca}}</li>
         {% endfor %}
-                    
-    </ul>
-</body>
-</html>
+    </ul>                
+
+{% endblock ContenidoQueCambia %}
+
+

@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Autos</title>
-</head>
-<body>
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+   
+<h1>SECCION AUTOS</h1>
+    
+<p>Estos son las marcas que se encuentran en STOCK:</p>
     <ul>
-        
         {% for auto in stock_autos  %}
             <li>{{auto.marca}}</li>
         {% endfor %}
-                    
-    </ul>
-</body>
-</html>
+    </ul>                
+
+{% endblock ContenidoQueCambia %}
+
