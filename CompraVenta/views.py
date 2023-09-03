@@ -44,14 +44,18 @@ def stock_motos(req):
      return render(req, "stock_motos.html", {"stock_motos": stock})
 
 def inicio(req):
-    return HttpResponse("Vista de Inicio")
+    return render(req, "inicio.html")
+    #return HttpResponse("Vista de Inicio")
 
 def vista_auto(req):
-    return HttpResponse("Vista de Autos")
+    return render(req, "vista_autos.html")
+    #return HttpResponse("Vista de Autos")
 
 def vista_camioneta(req):
-    return HttpResponse("Vista de Camionetas")
+    return render(req, "vista_camionetas.html")
+    #return HttpResponse("Vista de Camionetas")
 
 def vista_moto(req):
-    return HttpResponse("Vista de Motos")
+    return render(req, "vista_motos.html")
+    #return HttpResponse("Vista de Motos")
 

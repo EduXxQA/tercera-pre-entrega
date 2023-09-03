@@ -12,7 +12,7 @@ urlpatterns = [
     path('', inicio),
     path('vista-auto/', vista_auto),
     path('vista-camioneta/', vista_camioneta),
-    path('vista-moto/', vista_moto),
+    path('vista-motos/', vista_moto),
     
 ]
 
