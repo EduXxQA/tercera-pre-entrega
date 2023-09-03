@@ -13,6 +13,9 @@ urlpatterns = [
     path('vista-auto/', vista_auto, name='Vista_Autos'),
     path('vista-camioneta/', vista_camioneta, name="Vista_Camionetas"),
     path('vista-motos/', vista_moto, name="Vista_Motos"),
+    path('agregar-auto/', agregar_auto, name="Agregar_Auto"),
+    path('agregar-camioneta/', agregar_camioneta, name="Agregar_Camioneta"),
+    path('agregar-moto/', agregar_moto, name="Agregar_Moto"),
     
 ]
 

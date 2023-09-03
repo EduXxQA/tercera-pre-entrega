@@ -1,0 +1,22 @@
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+   
+<h1>SECCION AUTOS</h1>
+    
+<p>Agregar un auto a nuestro stock disponible:</p>
+
+    <form action="{% url 'Agregar_Auto' %}" method="post">{% csrf_token %}
+
+        <p>Marca: <input type="text" name="marca"></p>
+        <p>Modelo: <input type="text" name="modelo"></p>
+        <p>Año: <input type="number" name="anio"></p>
+
+        <button type="submit">Agregar</button>
+
+    </form>
+
+
+                  
+
+{% endblock ContenidoQueCambia %}

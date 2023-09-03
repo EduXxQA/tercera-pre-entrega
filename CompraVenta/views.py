@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Auto, Camioneta, Moto
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 
 # Create your views here.
 
@@ -39,9 +39,8 @@ def stock_camionetas(req):
      return render(req, "stock_camioneta.html", {"stock_camionetas": stock})
  
 def stock_motos(req):
-     stock = Moto.objects.all()
-    
-     return render(req, "stock_motos.html", {"stock_motos": stock})
+    stock = Moto.objects.all()
+    return render(req, "stock_motos.html", {"stock_motos": stock})
 
 def inicio(req):
     return render(req, "inicio.html")
@@ -54,5 +53,39 @@ def vista_camioneta(req):
 
 def vista_moto(req):
     return render(req, "vista_motos.html")
-    
 
+def agregar_auto(req: HttpRequest):
+    
+    print('method', req.method)
+    print('post', req.POST)
+    
+    if req.method == 'POST':
+        auto = Auto(marca=req.POST["marca"], modelo=req.POST["modelo"], anio=req.POST["anio"])
+        auto.save()
+        return render(req, "inicio.html", {"mensaje": "Auto agregado con éxito!!"})
+        
+    return render(req, "agregar_auto.html")    
+
+def agregar_camioneta(req):
+    
+    print('method', req.method)
+    print('post', req.POST)
+    
+    if req.method == 'POST':
+        camioneta = Camioneta(marca=req.POST["marca"], modelo=req.POST["modelo"], anio=req.POST["anio"])
+        camioneta.save()
+        return render(req, "inicio.html", {"mensaje": "Camioneta agregada con éxito!!"})
+    
+    return render(req, "agregar_camioneta.html")  
+
+def agregar_moto(req):
+    
+    print('method', req.method)
+    print('post', req.POST)
+    
+    if req.method == 'POST':
+        moto = Moto(marca=req.POST["marca"], modelo=req.POST["modelo"], anio=req.POST["anio"])
+        moto.save()
+        return render(req, "inicio.html", {"mensaje": "Moto agregada con éxito!!"})
+    
+    return render(req, "agregar_moto.html")  
