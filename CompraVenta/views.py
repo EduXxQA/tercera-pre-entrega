@@ -16,3 +16,16 @@ def stock_autos(req):
     stock = Auto.objects.all()
     
     return render(req, "stock_autos.html", {"stock_autos": stock})
+
+def inicio(req):
+    return HttpResponse("Vista de Inicio")
+
+def auto(req):
+    return HttpResponse("Vista de Autos")
+
+def camioneta(req):
+    return HttpResponse("Vista de Camionetas")
+
+def moto(req):
+    return HttpResponse("Vista de Motos")
+
