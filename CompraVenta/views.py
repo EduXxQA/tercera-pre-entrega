@@ -20,21 +20,28 @@ def camioneta(req, marca, modelo, anio):
         <p><strong>Camioneta:</strong> {auto.marca} - <strong>Modelo:</strong> {auto.modelo} - <strong>Año:</strong> {auto.anio} - <strong>Actualizado!!!</strong></p>                  
     """)    
     
+def moto(req, marca, modelo, anio):
+    moto = Moto(marca = marca, modelo = modelo, anio = anio)
+    moto.save()
+    
+    return HttpResponse(f"""
+        <p><strong>Moto:</strong> {moto.marca} - <strong>Modelo:</strong> {moto.modelo} - <strong>Año:</strong> {moto.anio} - <strong>Actualizado!!!</strong></p>                  
+    """) 
     
 def stock_autos(req):
-    stock = Auto.objects.all()
+     stock = Auto.objects.all()
     
-    return render(req, "stock_autos.html", {"stock_autos": stock})
+     return render(req, "stock_autos.html", {"stock_autos": stock})
 
-#def inicio(req):
-    return HttpResponse("Vista de Inicio")
+# def inicio(req):
+#     return HttpResponse("Vista de Inicio")
 
-#def auto(req):
-    return HttpResponse("Vista de Autos")
+# def auto(req):
+#     return HttpResponse("Vista de Autos")
 
-#def camioneta(req):
-    return HttpResponse("Vista de Camionetas")
+# def camioneta(req):
+#     return HttpResponse("Vista de Camionetas")
 
-#def moto(req):
-    return HttpResponse("Vista de Motos")
+# def moto(req):
+#     return HttpResponse("Vista de Motos")
 
