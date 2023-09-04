@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Auto, Camioneta, Moto
 from django.http import HttpResponse, HttpRequest
+from .forms import *
 
 # Create your views here.
 
@@ -60,32 +61,69 @@ def agregar_auto(req: HttpRequest):
     print('post', req.POST)
     
     if req.method == 'POST':
-        auto = Auto(marca=req.POST["marca"], modelo=req.POST["modelo"], anio=req.POST["anio"])
-        auto.save()
-        return render(req, "inicio.html", {"mensaje": "Auto agregado con éxito!!"})
         
-    return render(req, "agregar_auto.html")    
+        nuevoAuto = AgeragrAuto(req.POST)
+        
+        if nuevoAuto.is_valid():
+            print(nuevoAuto.cleaned_data)
+            data = nuevoAuto.cleaned_data
+        
+            auto = Auto(marca=data["marca"], modelo=data["modelo"], anio=data["anio"])
+            auto.save()
+            return render(req, "inicio.html", {"mensaje": "Auto agregado con éxito!!"})
+        else:
+            return render(req, "inicio.html", {"mensaje": "El auto no pudo ser agregado"})            
+    else:
+        nuevoAuto = AgeragrAuto()
+        return render(req, "agregar_auto.html", {"nuevoAuto": nuevoAuto})    
 
-def agregar_camioneta(req):
+def agregar_camioneta(req: HttpRequest):
     
     print('method', req.method)
     print('post', req.POST)
     
     if req.method == 'POST':
-        camioneta = Camioneta(marca=req.POST["marca"], modelo=req.POST["modelo"], anio=req.POST["anio"])
-        camioneta.save()
-        return render(req, "inicio.html", {"mensaje": "Camioneta agregada con éxito!!"})
+        
+        nuevaCamioneta = AgregarCamioneta(req.POST)
+        
+        if nuevaCamioneta.is_valid():
+            print(nuevaCamioneta.cleaned_data)
+            data = nuevaCamioneta.cleaned_data
+            
+            camioneta = Camioneta(marca=data["marca"], modelo=data["modelo"], anio=data["anio"])
+            camioneta.save()
+            return render(req, "inicio.html", {"mensaje": "Camioneta agregada con éxito!!"})
+        else:
+            return render(req, "inicio.html", {"mensaje": "La Camioneta no pudo ser agregada"}) 
+        
+    else:
+        nuevaCamioneta = AgregarCamioneta()
+        return render(req, "agregar_camioneta.html", {"nuevaCamioneta": nuevaCamioneta})   
     
-    return render(req, "agregar_camioneta.html")  
+             
+    
+      
 
-def agregar_moto(req):
+def agregar_moto(req: HttpRequest):
     
     print('method', req.method)
     print('post', req.POST)
     
     if req.method == 'POST':
-        moto = Moto(marca=req.POST["marca"], modelo=req.POST["modelo"], anio=req.POST["anio"])
-        moto.save()
-        return render(req, "inicio.html", {"mensaje": "Moto agregada con éxito!!"})
+        
+        nuevaMoto = AgregarMoto(req.POST)
+        
+        if nuevaMoto.is_valid():
+            print(nuevaMoto.cleaned_data)
+            data = nuevaMoto.cleaned_data
+            
+            moto = Moto(marca=data["marca"], modelo=data["modelo"], anio=data["anio"])
+            moto.save()
+            return render(req, "inicio.html", {"mensaje": "Moto agregada con éxito!!"})
+        else:
+            return render(req, "inicio.html", {"mensaje": "La moto no pudo ser agregada"}) 
+        
+    else:
+        nuevaMoto = AgregarMoto()
+        return render(req, "agregar_moto.html", {"nuevaMoto": nuevaMoto})   
     
-    return render(req, "agregar_moto.html")  

@@ -8,9 +8,7 @@
 
     <form action="{% url 'Agregar_Camioneta' %}" method="post">{% csrf_token %}
 
-        <p>Marca: <input type="text" name="marca"></p>
-        <p>Modelo: <input type="text" name="modelo"></p>
-        <p>Año: <input type="number" name="anio"></p>
+        {{nuevaCamioneta.as_p}}
 
         <button type="submit">Agregar</button>
 
