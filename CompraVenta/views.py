@@ -127,3 +127,41 @@ def agregar_moto(req: HttpRequest):
         nuevaMoto = AgregarMoto()
         return render(req, "agregar_moto.html", {"nuevaMoto": nuevaMoto})   
     
+    
+def busqueda_auto_marca(req):
+    return render(req, "busqueda_auto_marca.html") 
+
+def buscarAuto(req):
+    
+    if req.GET["marca"]:
+        marca = req.GET["marca"]
+        auto = Auto.objects.get(marca=marca)
+        return render(req, "Resultado_busqueda_auto.html", {"autos": auto})  
+    else:
+        return HttpResponse(f'No escribiste ninguna marca')
+        
+        
+def busqueda_camioneta_marca(req):
+    return render(req, "busqueda_camioneta_marca.html") 
+
+def buscarCamioneta(req):
+    
+    if req.GET["marca"]:
+        marca = req.GET["marca"]
+        camioneta = Camioneta.objects.get(marca=marca)
+        return render(req, "Resultado_busqueda_camioneta.html", {"camioneta": camioneta})  
+    else:
+        return HttpResponse(f'No escribiste ninguna marca')
+    
+
+def busqueda_moto_marca(req):
+    return render(req, "busqueda_moto_marca.html") 
+
+def buscarMoto(req):
+    
+    if req.GET["marca"]:
+        marca = req.GET["marca"]
+        moto = Moto.objects.get(marca=marca)
+        return render(req, "Resultado_busqueda_moto.html", {"moto": moto})  
+    else:
+        return HttpResponse(f'No escribiste ninguna marca')

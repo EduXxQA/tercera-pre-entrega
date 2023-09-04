@@ -1,0 +1,17 @@
+{% extends 'padre.html' %}
+
+{% block ContenidoQueCambia %}
+   
+<h1>SECCION AUTOS</h1>
+    
+<p>Buscar un auto de nuestro stock disponible:</p>
+
+    <form action="{% url 'Busca_Auto' %}" method="get">
+
+        <p>Marca: <input type="text" name="marca"></p>
+
+        <button type="submit">Buscar</button>
+
+    </form>
+
+{% endblock ContenidoQueCambia %}
