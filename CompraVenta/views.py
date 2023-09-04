@@ -158,10 +158,10 @@ def busqueda_moto_marca(req):
     return render(req, "busqueda_moto_marca.html") 
 
 def buscarMoto(req):
-    
+
     if req.GET["marca"]:
         marca = req.GET["marca"]
         moto = Moto.objects.get(marca=marca)
-        return render(req, "Resultado_busqueda_moto.html", {"moto": moto})  
+        return render(req, "Resultado_busqueda_moto.html", {"moto": moto})
     else:
         return HttpResponse(f'No escribiste ninguna marca')
